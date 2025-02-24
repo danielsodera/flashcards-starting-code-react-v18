@@ -15,7 +15,12 @@ const topicsSlice = createSlice({
             state.topics[id] = {id, name, icon, quizIds: []};
             console.log(state.topics)
         }
-
+    }, 
+    extraReducers: {
+        addQuizId: (state, action) => {
+            const { id, name, topicId, cardIds } = action.payload; 
+            state.topics[topicId].quizIds.push(id); 
+        }
     }
 })
 
